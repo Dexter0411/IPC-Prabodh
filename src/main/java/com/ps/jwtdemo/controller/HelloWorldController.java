@@ -24,6 +24,7 @@ public class HelloWorldController {
 
 	@RequestMapping({ "/getAllClient" })
 	public List<ClientMaster> getAllClientList() {
+		System.out.println("list::"+clientMasterService.getAllClientList());
 		return clientMasterService.getAllClientList();
 	}
 
