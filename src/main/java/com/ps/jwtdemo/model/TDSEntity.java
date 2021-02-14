@@ -1,6 +1,5 @@
 package com.ps.jwtdemo.model;
 
-import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -17,26 +16,29 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 
 @Entity
-@Table(name="tbl_master_roi")
+@Table(name="tbl_master_TDS")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class ROIEntity {
+@AllArgsConstructor
+@ToString
+public class TDSEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int roiMasterId;
-	private double roi;
-	private String iCreator;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	int id;
+	
+	double tds;
+	String iCreator;
 	@Column(name="c_date_time",updatable = false)
 	@CreationTimestamp
-	private LocalDateTime cDateTime;
+	LocalDateTime cDateTime;
 	@UpdateTimestamp
-	private LocalDateTime uDateTime;
-	private String isActive;
+	LocalDateTime uDateTime;
+	String isActive;
 	
 	
-
 }

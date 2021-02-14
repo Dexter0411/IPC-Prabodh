@@ -14,7 +14,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="master_prefix")
+@Table(name="tbl_master_prefix")
 @Getter
 @Setter
 @ToString
