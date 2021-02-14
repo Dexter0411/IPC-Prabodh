@@ -35,7 +35,7 @@ public class PrefixServiceImpl implements PrefixService {
 			temp.setMasterPId(id);
 			temp.setIsActive(upE.getIsActive());
 			temp.setPrefixMasterName(upE.getPrefixMasterName());
-			temp.setiCreator(upE.getiCreator());
+			temp.setICreator(upE.getICreator());
 			prefixDao.save(temp);
 		}
 		

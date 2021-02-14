@@ -43,7 +43,7 @@ public class MasterPrefixController {
 			prefixSer.updatePrefix(prefix,id);
 			return new ResponseEntity<PrefixEntity>(prefix,HttpStatus.ACCEPTED);
 		} catch (PrefixIdNotFoundException e) {
-			return new ResponseEntity<PrefixEntity>(prefix,HttpStatus.NOT_IMPLEMENTED);
+			return new ResponseEntity<PrefixEntity>(prefix,HttpStatus.NOT_MODIFIED);
 		}
 		
 	}
