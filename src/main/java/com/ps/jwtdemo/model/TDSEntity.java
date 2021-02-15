@@ -32,7 +32,7 @@ public class TDSEntity {
 	int id;
 	
 	double tds;
-	String iCreator;
+	String i_Creator;
 	@Column(name="c_date_time",updatable = false)
 	@CreationTimestamp
 	LocalDateTime cDateTime;

@@ -26,7 +26,7 @@ public class PrefixEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int masterPId;
 	private String prefixMasterName;
-	private String iCreator;
+	private String i_Creator;
 	private int isActive;
 	
 	
