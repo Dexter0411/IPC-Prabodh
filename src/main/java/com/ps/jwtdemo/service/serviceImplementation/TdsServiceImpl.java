@@ -29,15 +29,16 @@ public class TdsServiceImpl implements TdsService {
 	}
 
 	@Override
-	public TDSEntity updateTDS(TDSEntity tds, int id) throws TDSNotFoundException {
-		TDSEntity temp = tdsDao.findById(id).get();
-		if (temp.equals(null)) {
-			throw new TDSNotFoundException();
+	public TDSEntity updateTDS(TDSEntity tds, int id) throws ResourceNotFoundException {
+		Optional<TDSEntity> temp = tdsDao.findById(id);
+		if (!temp.isPresent()) {
+			throw new ResourceNotFoundException("ID : "+id+" not found in the database");
 		} else {
-			temp.setICreator(tds.getICreator());
-			temp.setIsActive(tds.getIsActive());
-			temp.setTds(tds.getTds());
-			tdsDao.save(temp);
+			TDSEntity data = temp.get();
+			data.setI_Creator(tds.getI_Creator());
+			data.setIsActive(tds.getIsActive());
+			data.setTds(tds.getTds());
+			tdsDao.save(data);
 			return tdsDao.findById(id).get();
 		}
 

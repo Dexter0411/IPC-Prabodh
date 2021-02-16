@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
 import com.ps.jwtdemo.Exceptions.TDSNotFoundException;
 import com.ps.jwtdemo.model.TDSEntity;
 import com.ps.jwtdemo.service.TdsService;
@@ -37,12 +38,12 @@ public class MasterTDSController {
 		
 	}
 	@PostMapping(path="/updateTDS/{id}")
-	ResponseEntity<TDSEntity> updateTDS(@RequestBody TDSEntity tdsEntity,@PathVariable int id){
+	ResponseEntity<TDSEntity> updateTDS(@RequestBody TDSEntity tdsEntity,@PathVariable int id) throws ResourceNotFoundException{
 		try {
 			TDSEntity udata=tdsService.updateTDS(tdsEntity, id);
 			return new ResponseEntity<TDSEntity>(udata,HttpStatus.CREATED);
-		} catch (TDSNotFoundException e) {
-			return new ResponseEntity<TDSEntity>(tdsEntity,HttpStatus.NOT_IMPLEMENTED);
+		} catch (ResourceNotFoundException e) {
+			throw e;
 		}
 		
 	}

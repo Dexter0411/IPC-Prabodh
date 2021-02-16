@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ps.jwtdemo.Exceptions.PrefixIdNotFoundException;
+import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
 import com.ps.jwtdemo.dao.PrefixDao;
 import com.ps.jwtdemo.service.PrefixService;
 import com.ps.jwtdemo.model.PrefixEntity;
@@ -26,16 +27,16 @@ public class PrefixServiceImpl implements PrefixService {
 	}
 
 	@Override
-	public void updatePrefix(PrefixEntity upE,int id) throws PrefixIdNotFoundException {
+	public void updatePrefix(PrefixEntity upE,int id) throws ResourceNotFoundException {
 		Optional<PrefixEntity> obj = prefixDao.findById(id);
 		if(!obj.isPresent()) {
-			throw new PrefixIdNotFoundException();
+			throw new ResourceNotFoundException("ID : "+ id +" not found in the data base");
 		}else {
 			PrefixEntity temp = obj.get();
 			temp.setMasterPId(id);
 			temp.setIsActive(upE.getIsActive());
 			temp.setPrefixMasterName(upE.getPrefixMasterName());
-			temp.setICreator(upE.getICreator());
+			temp.setI_Creator(upE.getI_Creator());
 			prefixDao.save(temp);
 		}
 		

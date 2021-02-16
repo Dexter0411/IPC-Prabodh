@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import com.ps.jwtdemo.Exceptions.ROINotFoundException;
+import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
 import com.ps.jwtdemo.dao.MasterRoiDao;
 import com.ps.jwtdemo.model.ROIEntity;
 import com.ps.jwtdemo.service.RoiService;
@@ -29,13 +28,13 @@ public class MasterRoiServiceImpl implements RoiService {
 	}
 
 	@Override
-	public ROIEntity updateRoi(ROIEntity roi,int id) throws ROINotFoundException {
+	public ROIEntity updateRoi(ROIEntity roi,int id) throws ResourceNotFoundException {
 		Optional<ROIEntity> obj = roiDao.findById(id);
 		if(!obj.isPresent()) {
-			throw new ROINotFoundException();
+			throw new ResourceNotFoundException("ID : "+id+" is not found in the database");
 		}else {
 		ROIEntity temp = obj.get();
-		temp.setICreator(roi.getICreator());
+		temp.setI_Creator(roi.getI_Creator());
 		temp.setIsActive(roi.getIsActive());
 		temp.setRoi(roi.getRoi());
 		roiDao.save(temp);

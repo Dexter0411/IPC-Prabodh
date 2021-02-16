@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ps.jwtdemo.Exceptions.ROINotFoundException;
+import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
 import com.ps.jwtdemo.model.ROIEntity;
 import com.ps.jwtdemo.service.RoiService;
 
@@ -37,12 +38,12 @@ public class MasterRoiController {
 	}
 	
 	@PostMapping(path="/updateRoi/{id}")
-	ResponseEntity<ROIEntity> updateNewRoi (@RequestBody ROIEntity roi,@PathVariable int id){
+	ResponseEntity<ROIEntity> updateNewRoi (@RequestBody ROIEntity roi,@PathVariable int id) throws ResourceNotFoundException{
 		try {
 		ROIEntity uData = rSer.updateRoi(roi, id);
 		return new ResponseEntity<ROIEntity>(uData,HttpStatus.ACCEPTED);
-		}catch(ROINotFoundException e) {
-			return new ResponseEntity<ROIEntity>(roi,HttpStatus.NOT_MODIFIED);
+		}catch(ResourceNotFoundException e) {
+			throw e;
 		}
 	}
 

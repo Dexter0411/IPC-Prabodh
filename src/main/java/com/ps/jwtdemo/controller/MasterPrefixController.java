@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ps.jwtdemo.Exceptions.PrefixIdNotFoundException;
+import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
 import com.ps.jwtdemo.model.PrefixEntity;
 import com.ps.jwtdemo.service.PrefixService;
 @RestController
@@ -38,12 +39,12 @@ public class MasterPrefixController {
 	}
 	
 	@PostMapping(path="/updatePrefix/{id}")
-	public ResponseEntity<PrefixEntity> updatePrefix(@RequestBody PrefixEntity prefix,@PathVariable int id ){
+	public ResponseEntity<PrefixEntity> updatePrefix(@RequestBody PrefixEntity prefix,@PathVariable int id ) throws ResourceNotFoundException{
 		try {
 			prefixSer.updatePrefix(prefix,id);
 			return new ResponseEntity<PrefixEntity>(prefix,HttpStatus.ACCEPTED);
-		} catch (PrefixIdNotFoundException e) {
-			return new ResponseEntity<PrefixEntity>(prefix,HttpStatus.NOT_MODIFIED);
+		} catch (ResourceNotFoundException e) {
+			throw e;
 		}
 		
 	}
