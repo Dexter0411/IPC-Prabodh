@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.LastModifiedDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "tblClientmaster")
+@Table(name = "ClientMaster")
 @Getter
 @Setter
 @ToString
@@ -26,102 +28,114 @@ public class ClientMaster {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int ClientID;
+	private int clientId;
 
-	private String Prefix;
+	private String prefix;
 
-	private String FirstName;
+	private String firstName;
 
-	private String LastName;
+	private String lastName;
 
-	private String MiddleName;
+	private String middleName;
 
-	private String FullName;
+	private String fullName;
 
-	private String Gender;
+	private String gender;
 
-	private LocalDate DOB;
+	private LocalDate dob;
 
-	private String PAN;
+	private String pan;
 
-	private long Aadhar;
+	private long aadhar;
 
-	private String Email;
+	private String email;
 
-	private long MobileNo;
+	private long mobileNo;
 
-	private long LandlineNo;
+	private long landlineNo;
 
-	private String CorrespondenceAddress;
+	private String correspondenceAddress;
 
-	private String PermanentAddress;
+	private String permanentAddress;
 
-	private double ROI_Percentage;
+	private double roiPercentage;
 
 	private String type;
 
-	private String DispatchMode;
+	private String dispatchMode;
 
-	private String JointHolderName_1;
+	private String firstJointHolderName;
 
-	private String Jointhold1_PAN;
+	private String firstJointholderPan;
 
-	private long Jointhold1_Aadhar;
+	private LocalDate firstJointholderDob;
 
-	private String JointHolderName_2;
+	private long firstJointHolderAadhar;
 
-	private String Jointhold2_PAN;
+	private String secondJointHolderName;
 
-	private long Jointhold2_Aadhar;
+	private String secondJointholderPan;
 
-	private String Category;
+	private LocalDate secondJointholderDob;
 
-	private String CHEQUE_NEFT;
+	private long secondJointHolderAadhar;
 
-	private String Bank_Name;
+	private String category;
 
-	private String MICR_Code;
+	private String cheque;
 
-	private String IFSC_Code;
+	private String neft;
 
-	private String Branch;
+	private String bankName;
 
-	private long AccNo;
+	private String micrCode;
 
-	private String Name_As_BankAcc;
+	private String ifscCode;
 
-	private String NomineeName_1;
+	private String branch;
 
-	private String Nominee1_PAN;
+	private long accNo;
 
-	private String Nominee1_Aadhar;
+	private String nameAsBankAcc;
 
-	private double Nominee1_Percentage;
+	private String firstNomineeName;
 
-	private String NomineeName_2;
+	private String firstNomineePan;
 
-	private String Nominee2_PAN;
+	private String firstNomineeAadhar;
 
-	private String Nominee2_Aadhar;
+	private double firstNomineePercentage;
 
-	private double Nominee2_Percentage;
+	private LocalDate firstNomineeDob;
 
-	private String GroupHeadA;
+	private String secondNomineeName;
 
-	private String FamilyHead;
+	private String secondNomineePan;
 
-	private String ReferencePersonName;
+	private String secondNomineeAadhar;
 
-	private String Remark;
+	private double secondNomineePercentage;
 
-	private String Special_Instructions;
+	private LocalDate secondNomineeDob;
 
-	private LocalDate RegisteredDate;
+	private String groupHeadA;
 
-	private LocalDateTime Last_Modification_Date;
+	private String familyHead;
+
+	private String referencePersonName;
+
+	private String remark;
+
+	private String specialInstructions;
+
+	private LocalDate registeredDate;
+
+	@LastModifiedDate
+	private LocalDateTime lastModificationDate;
 
 	private String iCreator;
 
-	private String Status;
+	private String status;
 
+	private boolean isActive;
 }
