@@ -18,12 +18,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+
 @Table(name = "ClientMaster")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class ClientMaster {
 
 	@Id
@@ -138,4 +140,5 @@ public class ClientMaster {
 	private String status;
 
 	private boolean isActive;
+
 }
