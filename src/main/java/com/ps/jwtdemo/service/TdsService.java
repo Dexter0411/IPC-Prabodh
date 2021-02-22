@@ -3,7 +3,6 @@ package com.ps.jwtdemo.service;
 import java.util.List;
 
 import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
-import com.ps.jwtdemo.Exceptions.TDSNotFoundException;
 import com.ps.jwtdemo.model.TDSEntity;
 
 public interface TdsService {

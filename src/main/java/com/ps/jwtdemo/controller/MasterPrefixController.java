@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ps.jwtdemo.Exceptions.PrefixIdNotFoundException;
 import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
 import com.ps.jwtdemo.model.PrefixEntity;
 import com.ps.jwtdemo.service.PrefixService;
@@ -30,23 +29,23 @@ public class MasterPrefixController {
 	@PostMapping(path="/addPrefix")
 	public ResponseEntity<PrefixEntity> addNewPrefix(@RequestBody PrefixEntity prefix){
 		try {
-		prefixSer.saveNewPrefix(prefix);
+		prefixSer.saveUpdatePrefix(prefix);
 		return new ResponseEntity<>(prefix,HttpStatus.CREATED);
 		}catch(Exception e) {
 			return new ResponseEntity<PrefixEntity>(HttpStatus.NOT_IMPLEMENTED);
 		}
 		
 	}
-	
-	@PostMapping(path="/updatePrefix/{id}")
-	public ResponseEntity<PrefixEntity> updatePrefix(@RequestBody PrefixEntity prefix,@PathVariable int id ) throws ResourceNotFoundException{
-		try {
-			prefixSer.updatePrefix(prefix,id);
-			return new ResponseEntity<PrefixEntity>(prefix,HttpStatus.ACCEPTED);
-		} catch (ResourceNotFoundException e) {
-			throw e;
-		}
-		
-	}
+//	
+//	@PostMapping(path="/updatePrefix/{id}")
+//	public ResponseEntity<PrefixEntity> updatePrefix(@RequestBody PrefixEntity prefix,@PathVariable int id ) throws ResourceNotFoundException{
+//		try {
+//			prefixSer.updatePrefix(prefix,id);
+//			return new ResponseEntity<PrefixEntity>(prefix,HttpStatus.ACCEPTED);
+//		} catch (ResourceNotFoundException e) {
+//			throw e;
+//		}
+//		
+//	}
 
 }

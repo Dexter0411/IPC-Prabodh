@@ -1,4 +1,4 @@
-package com.ps.jwtdemo.model;
+package com.ps.jwtdemo.dto;
 
 public class UserDTO {
 	private String username;

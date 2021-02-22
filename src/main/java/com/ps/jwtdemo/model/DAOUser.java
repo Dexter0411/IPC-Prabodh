@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tblLoginmaster")
+@Table(name = "tbl_login_master")
 public class DAOUser {
 
 	@Id

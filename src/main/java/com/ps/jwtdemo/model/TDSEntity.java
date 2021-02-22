@@ -20,7 +20,7 @@ import lombok.ToString;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 
 @Entity
-@Table(name="tbl_master_TDS")
+@Table(name="tbl_master_tds")
 @Getter
 @Setter
 @NoArgsConstructor

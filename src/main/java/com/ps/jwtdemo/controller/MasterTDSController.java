@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
-import com.ps.jwtdemo.Exceptions.TDSNotFoundException;
 import com.ps.jwtdemo.model.TDSEntity;
 import com.ps.jwtdemo.service.TdsService;
 

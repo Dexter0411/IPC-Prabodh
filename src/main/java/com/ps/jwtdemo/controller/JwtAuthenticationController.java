@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ps.jwtdemo.config.JwtTokenUtil;
+import com.ps.jwtdemo.dto.UserDTO;
 import com.ps.jwtdemo.model.JwtRequest;
 import com.ps.jwtdemo.model.JwtResponse;
-import com.ps.jwtdemo.model.UserDTO;
 import com.ps.jwtdemo.service.JwtUserDetailsService;
 
 

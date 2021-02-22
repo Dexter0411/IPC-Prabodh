@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.ps.jwtdemo.Exceptions.ROINotFoundException;
 import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
 import com.ps.jwtdemo.model.ROIEntity;
 import com.ps.jwtdemo.service.RoiService;
