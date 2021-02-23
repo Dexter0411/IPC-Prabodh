@@ -1,5 +1,6 @@
 package com.ps.jwtdemo.model;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -7,17 +8,43 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name="tbl_transactionmaster")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@NamedStoredProcedureQuery(name="triggerStoredProcedure",procedureName = "Usp_Ins_TransactionMaster",parameters = {
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="clientId",type=Integer.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="prefix",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="accHolderName",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="jointHolderName1",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="jointHolderName2",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="formType",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="category",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="financialYear",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="bankName",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="checkNumber",type=BigInteger.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="transactionDate",type=LocalDate.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="deploymentDate",type=LocalDate.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="openingBalance",type=Double.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="financialQuarter",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="amountDeposit",type=Double.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="amountWithdraw",type=Double.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="iCreator",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.IN,name="currentStatus",type=String.class),
+		@StoredProcedureParameter(mode=ParameterMode.OUT,name="Result",type=String.class)	
+})
 public class TransactionEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +60,10 @@ public class TransactionEntity {
 	String jointHolderName1;
 	@Column(name="JointholderName2")
 	String jointHolderName2;
-	@Column(name="type")
-	String type;
+	@Column(name="formType")
+	String formType;
 	@Column(name="Category")
-	String Category;
+	String category;
 	@Column(name="Roi")
 	Double roi;
 	@Column(name="FinancialYear")
@@ -46,7 +73,7 @@ public class TransactionEntity {
 	@Column(name="BankName")
 	String bankName;
 	@Column(name="CheckNumber")
-	Long checkNumber;
+	BigInteger checkNumber;
 	@Column(name="TransactionDate")
 	LocalDate transactionDate;
 	@Column(name="DeploymentDate")
@@ -68,8 +95,8 @@ public class TransactionEntity {
 	@Column(name="TransStatus")
 	String tranStatus;
 	@Column(name="iCreator")
-	String iCreator;
-	@Column(name="Status")
-	String status;
+	String i_Creator;
+	@Column(name="currentStatus")
+	String currentStatus;
 
 }

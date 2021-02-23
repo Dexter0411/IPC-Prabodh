@@ -7,5 +7,5 @@ import com.ps.jwtdemo.model.TransactionEntity;
 public interface TransactionService {
 
 	TransactionDTO getTransDetailsByClientId(int id) throws ResourceNotFoundException;
-	int callStoredProcedure(TransactionEntity tE);
+	String callStoredProcedure(TransactionEntity tE);
 }

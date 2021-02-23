@@ -28,10 +28,17 @@ public class TransactionController {
 	}
 	
 	@PostMapping(path="/callStoredProcedure")
-	public ResponseEntity<?> getTransactionDetails(@RequestBody TransactionEntity tE){
-		int success = transService.callStoredProcedure(tE);
-		System.out.println(success);
-		return null;
+	public ResponseEntity<TransactionEntity> getTransactionDetails(@RequestBody TransactionEntity tE){
+		try {
+		String success = transService.callStoredProcedure(tE);
+		if(success.equals("True")) {
+			return new ResponseEntity<TransactionEntity>(tE,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<TransactionEntity>(tE,HttpStatus.NOT_IMPLEMENTED);
+		}
+		}catch(Exception e) {
+			return new ResponseEntity<TransactionEntity>(tE,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		
 	}
 	

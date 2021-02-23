@@ -3,6 +3,7 @@ package com.ps.jwtdemo.service.serviceImplementation;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Service;
 
 import com.ps.jwtdemo.Exceptions.ResourceNotFoundException;
@@ -32,13 +33,14 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public int callStoredProcedure(TransactionEntity tE) {
-		tRepo.ExecuteStoredProcedure(tE.getClientId(), tE.getPrefix(), tE.getAccHolderName(), tE.getJointHolderName1(), 
-				tE.getJointHolderName2(), tE.getType(), tE.getCategory(), tE.getFinancialYear(), 
-				tE.getBankName(), tE.getCheckNumber(), tE.getTransactionDate(), tE.getDeploymentDate(), 
-				tE.getOpeningBalance(), tE.getFinancialQuarter(), tE.getDepositAmount(), tE.getAmountWithdraw(), 
-				tE.getICreator(), tE.getStatus());
-		return 0;
+	public String callStoredProcedure(TransactionEntity tE) {
+		
+		return tRepo.ExecuteStoredProcedure(tE.getClientId(), tE.getPrefix(), tE.getAccHolderName(), tE.getJointHolderName1(),
+				tE.getJointHolderName2(), tE.getFormType(), tE.getCategory(), tE.getFinancialYear(), tE.getBankName(),
+				tE.getCheckNumber(), tE.getTransactionDate(), tE.getDeploymentDate(), tE.getOpeningBalance(),
+				tE.getFinancialQuarter(), tE.getDepositAmount(), tE.getAmountWithdraw(), tE.getI_Creator(),
+				tE.getCurrentStatus());
+
 	}
 
 }
